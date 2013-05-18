@@ -9,6 +9,8 @@ gem 'pg'
 
 gem 'json'
 
+gem 'figaro'
+
 gem 'geocoder'
 
 gem 'omniauth'

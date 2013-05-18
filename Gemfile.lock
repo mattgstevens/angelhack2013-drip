@@ -59,6 +59,9 @@ GEM
       multi_json (~> 1.0)
     faraday (0.8.7)
       multipart-post (~> 1.1)
+    figaro (0.6.4)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     geocoder (1.1.8)
     gherkin (2.12.0)
       multi_json (~> 1.3)
@@ -167,6 +170,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   cucumber-rails
+  figaro
   geocoder
   jquery-rails
   json
