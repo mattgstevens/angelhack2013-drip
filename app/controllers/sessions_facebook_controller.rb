@@ -5,12 +5,12 @@ class SessionsFacebookController < ApplicationController
   end
 
   def create
-    auth = request.env["omniauth.auth"]
-    user_auth = UserAuth.where(provider: auth['provider'], uid: auth['uid']).first
-    if user_auth
-      user = user_auth.user
+    auth_params = request.env["omniauth.auth"]
+    auth = Auth.where(provider: auth_params['provider'], uid: auth_params['uid']).first
+    if auth
+      user = auth.user
     else
-      user = User.create_with_omniauth_facebook(auth)
+      user = User.create_with_omniauth_facebook(auth_params)
     end
     session[:user_id] = user.id
     redirect_to root_url, :notice => "Signed in!"
