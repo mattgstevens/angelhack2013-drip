@@ -6,4 +6,6 @@ Angelhack2013Drip::Application.routes.draw do
   match '/auth/facebook/callback' => 'sessions_facebook#create'
   match '/signout_facebook' => 'sessions_facebook#destroy'
   match '/signin_facebook' => 'sessions_facebook#new'
+
+  resources :users
 end

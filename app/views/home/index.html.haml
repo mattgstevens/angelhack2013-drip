@@ -1,19 +1,40 @@
 %h1 Home
 
-- if @user
+- if current_user
   %p
     Logged in
-    - if @user.name
+    - if current_user.name
       as
-      = @user.name
-
-- if @user
+      = current_user.name
+    - if current_user.email
+      = "(#{current_user.email})"
+    - if current_user.blood_type
+      = "[#{current_user.blood_type}]"
+      
+      
+- if current_user
+  - unless current_user.email
+    %p
+      = form_for current_user, url_for: {action: 'update'} do |user_form|
+        = user_form.label :email
+        = user_form.text_field :email
+        = user_form.submit 'Update'
+  - unless current_user.blood_type
+    %p
+      = form_for current_user, url_for: {action: 'update'} do |user_form|
+        = user_form.label :blood_type
+        = user_form.select :blood_type, options_for_select(['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-'])
+        = user_form.submit 'Update'
+        
+      No blood type
+      
+- if current_user
   - if session[:provider] == 'facebook'
     = link_to 'Sign out', signout_facebook_path
   - if session[:provider] == 'twitter'
     = link_to 'Sign out', signout_twitter_path
 
-- unless @user
+- unless current_user
   %p
     = link_to 'Sign in with Facebook', signin_facebook_path
   %p
