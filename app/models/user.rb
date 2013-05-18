@@ -14,7 +14,15 @@ class User < ActiveRecord::Base
 
   def self.create_with_omniauth_twitter(auth_params)
     user = User.create
-    user.auths.create(provider: auth_params['provider'], uid: auth_params['uid'])
+    if auth_params['info']
+      user.name = auth_params['info']['name'] || ""
+    end
+    user.auths.create(
+      provider: auth_params['provider'],
+      uid: auth_params['uid'],
+      token: auth_params['credentials']['token'],
+      secret: auth_params['credentials']['secret']
+    )
   end
 
 end
