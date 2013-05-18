@@ -1,0 +1,11 @@
+@h1 Home
+
+%ul
+  - flash.each do |key, msg|
+    = content_tag :li, msg, id: key
+
+%p
+  = link_to 'Sign in with Facebook', signin_facebook_path
+
+%p
+  = link_to 'Sign in with Twitter', signin_twitter_path
