@@ -13,6 +13,7 @@ class SessionsTwitterController < ApplicationController
       user = User.create_with_omniauth_twitter(auth_params)
     end
     session[:user_id] = user.id
+    session[:provider] = 'twitter'
     redirect_to root_url, :notice => "Signed in!"
   end
 

@@ -1,11 +1,24 @@
-@h1 Home
+%h1 Home
+
+- if @user
+  %p
+    Logged in
+    - if @user.name
+      as
+      = @user.name
 
 %ul
   - flash.each do |key, msg|
     = content_tag :li, msg, id: key
 
-%p
-  = link_to 'Sign in with Facebook', signin_facebook_path
+- if @user
+  - if session[:provider] == 'facebook'
+    = link_to 'Sign out', signout_facebook_path
+  - if session[:provider] == 'twitter'
+    = link_to 'Sign out', signout_twitter_path
 
-%p
-  = link_to 'Sign in with Twitter', signin_twitter_path
+- unless @user
+  %p
+    = link_to 'Sign in with Facebook', signin_facebook_path
+  %p
+    = link_to 'Sign in with Twitter', signin_twitter_path

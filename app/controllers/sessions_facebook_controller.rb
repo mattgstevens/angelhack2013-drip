@@ -13,6 +13,7 @@ class SessionsFacebookController < ApplicationController
       user = User.create_with_omniauth_facebook(auth_params)
     end
     session[:user_id] = user.id
+    session[:provider] = 'facebook'
     redirect_to root_url, :notice => "Signed in!"
   end
 
