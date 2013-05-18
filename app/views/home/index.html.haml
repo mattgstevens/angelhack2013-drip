@@ -7,10 +7,6 @@
       as
       = @user.name
 
-%ul
-  - flash.each do |key, msg|
-    = content_tag :li, msg, id: key
-
 - if @user
   - if session[:provider] == 'facebook'
     = link_to 'Sign out', signout_facebook_path
