@@ -9,6 +9,8 @@ gem 'pg'
 
 gem 'json'
 
+gem 'haml'
+
 gem 'figaro'
 
 gem 'geocoder'
