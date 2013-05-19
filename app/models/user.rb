@@ -36,10 +36,21 @@ class User < ActiveRecord::Base
     end
   end
 
+  def post_to_facebook(msg)
+    if facebook_auth
+      fb = Koala::Facebook::API.new(facebook_auth.token)
+      fb.put_wall_post(msg)
+    end
+  end
+
   private
 
   def twitter_auth
     auths.where(provider: 'twitter').first
+  end
+
+  def facebook_auth
+    auths.where(provider: 'facebook').first
   end
 
 end
