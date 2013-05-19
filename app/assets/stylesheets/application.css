@@ -14,3 +14,11 @@ body {
 img {
   border: 0;
 }
+
+#nav_bar {
+  text-align: center;
+  background: url('bg-red_bar.png') no-repeat;
+}
+#nav_bar img {
+  margin-top: 4px;
+}
