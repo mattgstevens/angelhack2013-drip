@@ -1,0 +1,16 @@
+body {
+  background: url("bg_login.png") no-repeat;
+}
+
+#logo {
+  display: block;
+  width: 500px;
+  margin: 250px auto;
+}
+
+#sign_up {
+  width:450px;
+  margin: auto;
+  padding-top: 200px;
+  text-align: center;
+}
