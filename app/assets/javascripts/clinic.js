@@ -43,6 +43,7 @@ Drip.map = {
 
 $(function () {
   Drip.stats.toggle_active('#clinic');
+  Drip.map.load_map();
 
   $('#clinic').click(function() {
     Drip.stats.toggle_active('#clinic');
