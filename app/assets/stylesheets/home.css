@@ -26,13 +26,13 @@ body {
 
 #user_info input[type=submit] {
   color: white;
-  background-color: #DE472F;
+  background-color: #CD361E;
   padding: 0.3em;
 }
 
 #user_info a {
   color: white;
-  background-color: #DE472F;
+  background-color: #CD361E;
   padding: 0.4em;
   text-decoration: none;
 }
