@@ -22,8 +22,23 @@
       = user_form.label :blood_type
       = user_form.select :blood_type, options_for_select(['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-'])
       = user_form.submit 'Update'
+
 - if current_user.can_donate?
   = link_to 'Donate', donate_path(latitude: -79.0, longitude: 43.0)
+- else
+  %p
+    = "You can donate again in #{pluralize(current_user.days_until_can_donate, "day")}"
+
+- if @achievement.pints_count > 0
+  %p
+    = pluralize(@achievement.pints_count, "pint")
+  %p
+    = "#{@achievement.people_saved} lives saved"
+
+- if !@achievement.message.blank?
+  %p
+    Achieved
+    = @achievement.in_app_message
 
 - if session[:provider] == 'facebook'
   = link_to 'Sign out', signout_facebook_path

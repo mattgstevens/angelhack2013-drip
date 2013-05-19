@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     unless current_user
       redirect_to(:controller => 'home', :action => 'index') and return
     end
+    @achievement = Achievement.new(current_user)
   end
 
   def update
@@ -18,9 +19,10 @@ class UsersController < ApplicationController
       fakey = Clinic.new(x_coord: params[:latitude], y_coord: params[:longitude])
       nearest_clinic = fakey.nearbys(0.3, order: 'distance').first
       Donation.create(user: current_user, clinic: nearest_clinic, date: Date.today) if nearest_clinic.currently_open?
-      redirect_to user_info_path,  :notice => "Thanks for donating"
+      @achievement = Achievement.new(current_user)
+      render :info, :notice => @achievement.in_app_message
     else
-      redirect_to user_info_path,  :notice => "You cant donate now"
+      render :info,  :notice => "You can't donate now"
     end
   end
 

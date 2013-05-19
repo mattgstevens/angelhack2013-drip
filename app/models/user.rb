@@ -45,11 +45,16 @@ class User < ActiveRecord::Base
   end
 
   def can_donate?
+    days_until_can_donate < 1
+  end
+
+  def days_until_can_donate
     last = self.donations.last
     if last
-      return last.date <= Date.today - 60
+      return 60 - (Date.today - last.date).to_i
+    else
+      return 0
     end
-    return true
   end
 
   private
