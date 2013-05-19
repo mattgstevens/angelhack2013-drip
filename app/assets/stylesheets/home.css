@@ -1,5 +1,6 @@
 body {
   background: url("bg_login.png") no-repeat;
+  font-family: "Century Gothic","Apple Gothic",AppleGothic,"URW Gothic L","Avant Garde",Futura,sans-serif;
 }
 
 #logo {
@@ -17,4 +18,25 @@ body {
 
 #social_login a {
   margin: 0 65px;
+}
+
+#user_info {
+  margin: 1em;
+}
+
+#user_info input[type=submit] {
+  color: white;
+  background-color: #DE472F;
+  padding: 0.3em;
+}
+
+#user_info a {
+  color: white;
+  background-color: #DE472F;
+  padding: 0.4em;
+  text-decoration: none;
+}
+
+h1 {
+  color: #DE472F;
 }

@@ -1,46 +1,43 @@
-%h1 Home
+#user_info
 
-%p
-  Logged in
-  - if current_user.name
-    as
-    = current_user.name
-  - if current_user.email
-    = "(#{current_user.email})"
-  - if current_user.blood_type
-    = "[#{current_user.blood_type}]"
+  %h1
+    Welcome
+    - if current_user.name
+      = current_user.name
+    - if current_user.blood_type
+      = "[#{current_user.blood_type}]"
 
-- unless current_user.email
-  %p
-    = form_for current_user, url_for: {action: 'update'} do |user_form|
-      = user_form.label :email
-      = user_form.text_field :email
-      = user_form.submit 'Update'
-- unless current_user.blood_type
-  %p
-    = form_for current_user, url_for: {action: 'update'} do |user_form|
-      = user_form.label :blood_type
-      = user_form.select :blood_type, options_for_select(['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-'])
-      = user_form.submit 'Update'
+  - unless current_user.email
+    %p
+      = form_for current_user, url_for: {action: 'update'} do |user_form|
+        = user_form.label :email
+        = user_form.text_field :email
+        = user_form.submit 'Update'
+  - unless current_user.blood_type
+    %p
+      = form_for current_user, url_for: {action: 'update'} do |user_form|
+        = user_form.label :blood_type
+        = user_form.select :blood_type, options_for_select(['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-'])
+        = user_form.submit 'Update'
 
-- if current_user.can_donate?
-  = link_to 'Donate', donate_path(latitude: -79.0, longitude: 43.0)
-- else
-  %p
-    = "You can donate again in #{pluralize(current_user.days_until_can_donate, "day")}"
+  - if current_user.can_donate?
+    = link_to 'Donate', donate_path(latitude: -79.0, longitude: 43.0)
+  - else
+    %p
+      = "You can donate again in #{pluralize(current_user.days_until_can_donate, "day")}"
 
-- if @achievement.pints_count > 0
-  %p
-    = pluralize(@achievement.pints_count, "pint")
-  %p
-    = "#{@achievement.people_saved} lives saved"
+  - if @achievement.pints_count > 0
+    %p
+      = pluralize(@achievement.pints_count, "pint")
+    %p
+      = "#{@achievement.people_saved} lives saved"
 
-- if !@achievement.message.blank?
-  %p
-    Achieved
-    = @achievement.in_app_message
+  - if !@achievement.message.blank?
+    %p
+      Achieved
+      = @achievement.in_app_message
 
-- if session[:provider] == 'facebook'
-  = link_to 'Sign out', signout_facebook_path
-- if session[:provider] == 'twitter'
-  = link_to 'Sign out', signout_twitter_path
+  - if session[:provider] == 'facebook'
+    = link_to 'Sign out', signout_facebook_path
+  - if session[:provider] == 'twitter'
+    = link_to 'Sign out', signout_twitter_path
