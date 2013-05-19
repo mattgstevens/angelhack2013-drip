@@ -21,20 +21,19 @@
         = user_form.submit 'Update'
 
   - if current_user.can_donate?
-    = link_to 'DONATE', donate_path(latitude: -79.0, longitude: 43.0)
+    = link_to 'DONATE', donate_path(latitude: 43.6475898, longitude: -79.3849767)
   - else
     %p
       = "You can donate again in #{pluralize(current_user.days_until_can_donate, "day")}"
 
   - if @achievement.pints_count > 0
     %p
-      = pluralize(@achievement.pints_count, "pint")
-    %p
-      = "#{@achievement.people_saved} lives saved"
+      = "Donated: #{pluralize(@achievement.pints_count, "pint")}"
+      %br
+      = "Saved: #{@achievement.people_saved} lives"
 
   - if !@achievement.message.blank?
     %p
-      Achieved
       = @achievement.in_app_message
 
   - if session[:provider] == 'facebook'
