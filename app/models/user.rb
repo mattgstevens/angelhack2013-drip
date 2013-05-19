@@ -2,14 +2,6 @@ class User < ActiveRecord::Base
   has_many :user_auths
   has_many :auths, through: :user_auths
 
-  def tweet(msg)
-    tweeter = Twitter::Client.new(
-      oauth_token: current_user.auth.token,
-      oauth_token_secret: current_user.auth.secret
-    )
-    tweeter.update(msg)
-  end
-
   def self.create_with_omniauth_facebook(auth_params)
     user = User.new
     if auth_params['info']
@@ -32,6 +24,22 @@ class User < ActiveRecord::Base
       token: auth_params['credentials']['token'],
       secret: auth_params['credentials']['secret']
     )
+  end
+
+  def tweet(msg)
+    if twitter_auth
+      tweeter = Twitter::Client.new(
+        oauth_token: twitter_auth.token,
+        oauth_token_secret: twitter_auth.secret
+        )
+      tweeter.update(msg)
+    end
+  end
+
+  private
+
+  def twitter_auth
+    auths.where(provider: 'twitter').first
   end
 
 end
