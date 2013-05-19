@@ -37,6 +37,21 @@ ActiveRecord::Schema.define(:version => 20130518205223) do
     t.string   "province"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+
+  create_table "clinic_schedules", :force => true do |t|
+    t.date    "date"
+    t.string  "begin_time"
+    t.string  "end_time"
+    t.integer "clinic_id"
+  end
+
+  create_table "clinics", :force => true do |t|
+    t.string "city"
+    t.string "building"
+    t.string "building_directions"
+    t.string "address"
+    t.float  "y_coord"
+    t.float  "x_coord"
   end
 
 end
