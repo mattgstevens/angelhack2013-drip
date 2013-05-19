@@ -1,0 +1,33 @@
+#nav_bar {
+  text-align: center;
+  background: url('bg-red_bar.png') no-repeat;
+}
+#stat_select {
+  background: url('stat_inactive.png');
+}
+.stat_icon {
+  padding-top: 10px;
+  text-align: center;
+  display: inline-block;
+  height: 201px;
+  width: 32.9%;
+}
+.active_stat_icon {
+  background: url('stat_active.png') no-repeat;
+}
+#stat_divide {
+  width: 640px;
+  height: 8px;
+  background: url('bg-green_bar.jpg') no-repeat;
+}
+.stat_set {
+  display: none;
+}
+.active_stat_set {
+  display: block;
+}
+.stat_line {
+  background: url('bg-red_bar.png') no-repeat;
+  color: white;
+  font: 25px sans-serif;
+}

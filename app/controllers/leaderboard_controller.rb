@@ -1,7 +1,8 @@
 class LeaderboardController < ApplicationController
 
   def info
-
+    @city_stats = Clinic.city_donation_stats
+    @clinic_stats = Clinic.clinic_donation_stats
   end
 
   def city_stats
