@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :user_auths
   has_many :auths, through: :user_auths
+  has_many :donations
 
   def self.create_with_omniauth_facebook(auth_params)
     user = User.new

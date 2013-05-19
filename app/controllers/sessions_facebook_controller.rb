@@ -14,7 +14,7 @@ class SessionsFacebookController < ApplicationController
     end
     session[:user_id] = user.id
     session[:provider] = 'facebook'
-    redirect_to info_path, :notice => "Signed in!"
+    redirect_to user_info_path, :notice => "Signed in!"
   end
 
   def destroy

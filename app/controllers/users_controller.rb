@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if current_user
       current_user.update_attributes(params[:user])
     end
-    redirect_to info_path
+    redirect_to user_info_path
   end
 
 end

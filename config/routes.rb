@@ -10,5 +10,10 @@ Angelhack2013Drip::Application.routes.draw do
   match '/signin_facebook' => 'sessions_facebook#new'
 
   resources :users
-  get '/info', to: 'users#info', as: 'info'
+  get '/info', to: 'users#info', as: 'user_info'
+
+  # stats
+  get '/leaderboard', to: 'leaderboard#info', as: 'leaderboard'
+  get '/city_stats', to: 'leaderboard#city_stats'
+  get '/clinic_stats', to: 'leaderboard#clinic_stats'
 end
