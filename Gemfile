@@ -44,6 +44,7 @@ gem 'jquery-rails'
 # gem 'ruby-debug'
 
 group :development, :test do
+  gem 'pry'
   gem 'rspec-rails', require: false
   gem 'cucumber-rails', require: false
 end
