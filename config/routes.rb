@@ -11,6 +11,7 @@ Angelhack2013Drip::Application.routes.draw do
 
   resources :users
   get '/info', to: 'users#info', as: 'user_info'
+  get '/donate', to: 'users#donate', as: 'donate'
 
   # stats
   get '/leaderboard', to: 'leaderboard#info', as: 'leaderboard'

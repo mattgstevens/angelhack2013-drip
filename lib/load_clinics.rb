@@ -1,6 +1,6 @@
 require 'csv'
 
-class FetchClinics
+class LoadClinics
 
   def self.clinics_file
     'tmp/clinics.csv'
@@ -34,18 +34,18 @@ class FetchClinics
       end
       }
       clean_data[:clinic_schedules_attributes] = [schedule]
-      clean_data[:x_coord] = clean_data[:x_coord].to_i
-      clean_data[:y_coord] = clean_data[:y_coord].to_i
+      clean_data[:x_coord] = clean_data[:x_coord].to_f
+      clean_data[:y_coord] = clean_data[:y_coord].to_f
       clean_data
   end
 
   def self.with_building_description(row)
-    attributes = [:clinic_schedules_attribute__date, :city, :building, :building_directions, :address, 'city_again', :clinic_schedules_attribute__begin_time, :clinic_schedules_attribute__end_time, 'one', 'another_number', :y_coord, :x_coord, 'yet_another_number', 'long_string']
+    attributes = [:clinic_schedules_attribute__date, :city, :building, :building_directions, :address, 'city_again', :clinic_schedules_attribute__begin_time, :clinic_schedules_attribute__end_time, 'distance', 'one', 'another_number', :y_coord, :x_coord, 'yet_another_number', 'long_string']
     Hash[attributes.zip(row)]
   end
 
   def self.without_building_description(row)
-    attributes = [:date, :city, :building, :address, 'city_again', :begin_time, :end_time, 'one', 'another_number', :y_coord, :x_coord, 'yet_another_number', 'long_string']
+    attributes = [:date, :city, :building, :address, 'city_again', :begin_time, :end_time, 'distance', 'one', 'another_number', :y_coord, :x_coord, 'yet_another_number', 'long_string']
     Hash[attributes.zip(row)]
   end
 

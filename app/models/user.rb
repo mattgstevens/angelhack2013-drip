@@ -44,6 +44,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def can_donate?
+    last = self.donations.last
+    if last
+      return last.date <= Date.today - 60
+    end
+    return false
+  end
+
   private
 
   def twitter_auth

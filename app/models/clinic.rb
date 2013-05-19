@@ -24,7 +24,11 @@ class Clinic < ActiveRecord::Base
     clinic_stats.sort_by{ |k,v| v }.reverse
   end
 
-  def self.nearby_clinics(lat, long)
-
+  def currently_open?
+    # data for clinics sucks.. need to normalize begin & close times
+    if open_clinic = self.clinic_schedules.where(date: Date.today)
+      return true
+    end
+    return false
   end
 end
