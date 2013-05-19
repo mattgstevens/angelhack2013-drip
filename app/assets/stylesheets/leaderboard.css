@@ -31,3 +31,15 @@
   color: white;
   font: 25px sans-serif;
 }
+.stat_line div {
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+  min-width: 100px;
+  min-height: 55px;
+  text-align: center
+}
+
+.stat_line .last_stat {
+  float: right;
+}

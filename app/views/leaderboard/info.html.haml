@@ -11,9 +11,6 @@
 #clinic_stats.stat_set
   = render 'leaderboard/stat_line', stats: @clinic_stats
 #city_stats.stat_set
-  - @city_stats.each_index do |i|
-    .stat_line
-      .index= i+1
-      .details= @city_stats[i][0]
-      .donations= @city_stats[i][1]
+  = render 'leaderboard/stat_line', stats: @city_stats
 #country_stats.stat_set
+  = render 'leaderboard/stat_line', stats: @country_stats
