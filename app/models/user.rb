@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   def tweet(msg)
     tweeter = Twitter::Client.new(
-      oauth_token:, current_user.auth.token
+      oauth_token: current_user.auth.token,
       oauth_token_secret: current_user.auth.secret
     )
     tweeter.update(msg)
