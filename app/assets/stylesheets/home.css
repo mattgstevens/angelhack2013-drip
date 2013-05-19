@@ -9,8 +9,12 @@ body {
 }
 
 #sign_up {
-  width:450px;
+  width: 450px;
   margin: auto;
   padding-top: 200px;
   text-align: center;
+}
+
+#social_login a {
+  margin: 0 65px;
 }
