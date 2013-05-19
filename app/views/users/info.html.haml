@@ -21,7 +21,7 @@
         = user_form.submit 'Update'
 
   - if current_user.can_donate?
-    = link_to 'DONATE', donate_path(latitude: 43.6475898, longitude: -79.3849767)
+    = link_to 'DONATE', donate_path(longitude: 43.6475898, latitude: -79.3849767)
   - else
     %p
       = "You can donate again in #{pluralize(current_user.days_until_can_donate, "day")}"
