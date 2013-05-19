@@ -9,7 +9,10 @@ class User < ActiveRecord::Base
       user.email = auth_params['info']['email'] || ""
     end
     user.save
-    user.auths.create(provider: auth_params['provider'], uid: auth_params['uid'])
+    user.auths.create(
+      provider: auth_params['provider'],
+      uid: auth_params['uid'],
+      token: auth_params['credentials']['token'])
   end
 
   def self.create_with_omniauth_twitter(auth_params)
