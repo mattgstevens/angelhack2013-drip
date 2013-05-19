@@ -3,7 +3,7 @@ require 'csv'
 class LoadClinics
 
   def self.clinics_file
-    'clinics.csv'
+    'lib/clinics.csv'
   end
 
   def self.load
