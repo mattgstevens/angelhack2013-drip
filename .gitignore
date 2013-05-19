@@ -14,5 +14,9 @@
 /log/*.log
 /tmp
 
+# Ignore OSX tmps
+.DS_Store
+
+# Secret files ahoy
 /config/application.yml
 /config/database.yml
