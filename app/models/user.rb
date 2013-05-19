@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
     )
   end
 
-  def tweet(msg)
+  def broadcast(msg)
     if twitter_auth
       tweeter = Twitter::Client.new(
         oauth_token: twitter_auth.token,
@@ -37,9 +37,6 @@ class User < ActiveRecord::Base
         )
       tweeter.update(msg)
     end
-  end
-
-  def post_to_facebook(msg)
     if facebook_auth
       fb = Koala::Facebook::API.new(facebook_auth.token)
       fb.put_wall_post(msg)
