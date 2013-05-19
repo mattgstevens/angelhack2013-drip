@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
     if last
       return last.date <= Date.today - 60
     end
-    return false
+    return true
   end
 
   private

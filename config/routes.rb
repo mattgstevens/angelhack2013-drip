@@ -14,7 +14,6 @@ Angelhack2013Drip::Application.routes.draw do
   get '/donate', to: 'users#donate', as: 'donate'
 
   # stats
-  get '/leaderboard', to: 'leaderboard#info', as: 'leaderboard'
-  get '/city_stats', to: 'leaderboard#city_stats'
-  get '/clinic_stats', to: 'leaderboard#clinic_stats'
+  get '/leaderboard', to: 'clinic#info', as: 'leaderboard'
+  get '/map', to: 'clinic#map', as: 'map'
 end
